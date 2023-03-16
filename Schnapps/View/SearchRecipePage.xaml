@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Schnapps.View.SearchRecipePage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:Schnapps.Converters"
+             xmlns:viewmodel="clr-namespace:Schnapps.ViewModel"
+             xmlns:model="clr-namespace:Schnapps.Model"
+             x:DataType="viewmodel:SearchRecipesViewModel"
+             Title="Inspiration"
+             Shell.FlyoutBehavior="Flyout">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+
+    <ScrollView BackgroundColor="LightGray">
+        <VerticalStackLayout Padding="10" Spacing="30">
+            <Label Text="Set search options from the menu buttons" HorizontalOptions="Center" FontSize="Title" Padding="10"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="40">
+                <Picker x:Name="picker"
+                        CharacterSpacing="4"
+                        Title="Ingredient"
+                        FontSize="16"
+                        ItemsSource="{Binding Ingredients}"
+                        SelectedItem="{Binding ChosenItem, Mode=TwoWay}">
+                </Picker>
+                <Button Text="Search!" Command="{Binding MakeSelectionCommand}" IsEnabled="{Binding ChosenItem, Converter={StaticResource IsNotNullConverter}}"/>
+            </HorizontalStackLayout>
+            <CollectionView ItemsSource="{Binding Drinks}" SelectionMode="None" HorizontalScrollBarVisibility="Default" HeightRequest="450" MaximumWidthRequest="320">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:DisplayItem" >
+                        <Frame HasShadow="True" BorderColor="DimGray" BackgroundColor="LightGray"  >
+                            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                                <Image HeightRequest="100" WidthRequest="100" Source="{Binding Thumbnail}"></Image>
+                                <VerticalStackLayout HorizontalOptions="Center" WidthRequest="180" Spacing="10" Padding="30,2,0,2">
+                                    <Label Text="{Binding Name}" HorizontalTextAlignment="Center" FontSize="16" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                                    <Button Text="Recipe" HorizontalOptions="Center"  WidthRequest="100" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SearchRecipesViewModel}}, Path=ShowDetailsCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

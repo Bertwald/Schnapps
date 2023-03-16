@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:Schnapps.ViewModel"
+             xmlns:model="clr-namespace:Schnapps.Model"
+             x:DataType="viewmodel:SavedAndRatedViewModel"
+             x:Class="Schnapps.View.SavedAndRatedPage"
+             Title="SavedAndRatedPage"
+             Shell.FlyoutBehavior="Flyout"
+             BackgroundColor="LightGray">
+    <VerticalStackLayout Spacing="20">
+        <Label 
+            Text="Rate your saved recipes here!"
+            FontSize="Title"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+        <VerticalStackLayout MaximumWidthRequest="120">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="40">
+                <Picker x:Name="picker"
+                        CharacterSpacing="4"
+                        FontSize="Subtitle"
+                        ItemsSource="{Binding Recipes}"
+                        ItemDisplayBinding="{Binding DrinkName}"
+                        SelectedItem="{Binding CurrentlyRating, Mode=TwoWay}">
+                    <Picker.Behaviors>
+                        <toolkit:EventToCommandBehavior
+                        EventName="SelectedIndexChanged"
+                        Command="{Binding MakeSelectionCommand} "
+                        CommandParameter="{Binding CurrentlyRating}"/>
+                    </Picker.Behaviors>
+                </Picker>
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout Spacing="5" Margin="20">
+                <Image Source="{Binding CurrentlyRating.Imageurl}" WidthRequest="200" HeightRequest="200"></Image>
+                <HorizontalStackLayout Spacing="1" HorizontalOptions="Center">
+                    <Label Text="Rating: " FontSize="Body"></Label>
+                    <Label Text="{Binding RatingString}" FontSize="Body" TextColor="{x:StaticResource Cyan100Accent}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Grid Margin="10"
+            x:Name="ratingGrid"
+            ColumnDefinitions="*,*,*,*,*,*"  
+            HeightRequest="50"
+            MaximumWidthRequest="400"/>
+
+            <Slider x:Name="RatingSlider"
+                Value="{Binding Rating}"
+                MaximumTrackColor="Black"
+                MinimumTrackColor="Black"
+                Minimum="1.0"
+                Maximum="6.0"
+                ValueChanged="Slider_ValueChanged"
+                 />
+            <Button Text="RATE!" HorizontalOptions="Center" Clicked="ConformRating" Command="{Binding RateCommand}"></Button>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

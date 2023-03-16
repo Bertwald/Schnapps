@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Schnapps.ViewModel"
+             x:DataType="viewmodel:DetailedPageViewModel"
+             x:Class="Schnapps.View.DetailsPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="{Binding Title}"
+             Shell.FlyoutBehavior="Flyout"
+             BackgroundColor="gray">
+    <ScrollView>
+    <VerticalStackLayout BackgroundColor="lightgray" Spacing="5" HorizontalOptions="CenterAndExpand" Padding="20">
+            <Image Source="{Binding ObservableRecipe.Imageurl}" Aspect="AspectFit" WidthRequest="250" HorizontalOptions="Center"/>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text="Alcohol Verified" IsVisible="{Binding ObservableRecipe.IsAlcoholic}" FontSize="Small" TextColor="Green"/>
+                <Image Source="ok.png" HeightRequest="20" WidthRequest="20" IsVisible="{Binding ObservableRecipe.IsAlcoholic}"/>
+            </HorizontalStackLayout>
+            <Label Text="{Binding ObservableRecipe.DrinkName}" HorizontalOptions="Center" FontSize="Title" TextColor="DimGray" FontAttributes="Bold"/>
+            <Label Text="What you need" HorizontalOptions="Center" FontSize="Subtitle" FontAttributes="Italic"/>
+            <ListView ItemsSource="{Binding ObservableRecipe.Ingredients}" SelectionMode="None" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="240" VerticalScrollBarVisibility="Never" VerticalOptions="StartAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <ViewCell>
+                            <Label Text="{Binding .}" HorizontalTextAlignment="Center" FontSize="Body" Padding="5"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Instructions" HorizontalOptions="Center" FontSize="Subtitle" FontAttributes="Italic"/>
+            <Label Text="{Binding ObservableRecipe.Instructions}" HorizontalOptions="Center" MaximumWidthRequest="300"/>
+            <Label Text="Video Instructions" IsVisible="{Binding ObservableRecipe.VideoURL.Length,Converter={StaticResource NatToBool}}" HorizontalOptions="Center" FontSize="Subtitle" FontAttributes="Italic"/>
+            <Frame BackgroundColor="DimGray"
+                                   BorderColor="Black"
+                                   HeightRequest="350"
+                   MaximumWidthRequest="350"
+                                   Margin="10"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                   IsVisible="{Binding ObservableRecipe.VideoURL.Length,Converter={StaticResource NatToBool}}">
+                <toolkit:MediaElement
+                                    ShouldAutoPlay="False"
+                                    ShouldShowPlaybackControls="True"
+                                    Source="{Binding ObservableRecipe.VideoURL}"
+                                    HeightRequest="300">
+                </toolkit:MediaElement>
+            </Frame>
+            <VerticalStackLayout HorizontalOptions="Center" Padding="40" Spacing="40">
+                <Button Text="{Binding CurrentCommand}" FontSize="Body" HorizontalOptions="Center" Command="{Binding ExecuteSaveButtonCommand}"/>
+                <Button Text="Random New" FontSize="Body" HorizontalOptions="Center" Command="{Binding RandomNewCommand}"/>
+        </VerticalStackLayout>
+        </VerticalStackLayout>
+        
+    </ScrollView>
+</ContentPage>

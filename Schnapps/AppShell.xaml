@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Schnapps.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Schnapps"
+    xmlns:views="clr-namespace:Schnapps.View"
+    x:DataType="local:AppShell"
+    Shell.TabBarIsVisible="False"
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.FlyoutHeader>
+        <Image Source="gentleman.jpg" MaximumHeightRequest="100" MaximumWidthRequest="100"/>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout Padding="5" HorizontalOptions="Center">
+            <Image Source="breengelboss.png" MaximumHeightRequest="100" MaximumWidthRequest="100"/>
+            <Label Text="By Breengel" FontSize="24"></Label>
+            <Button Text="Log out" Command="{Binding LogoutCommand}"/>
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnSpacing="10" RowDefinitions="10,Auto,10,1" ColumnDefinitions="35,180,35">
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Title}" HorizontalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="{x:StaticResource Gray600}"/>
+                <BoxView Grid.Row="3"
+                     Color="LightGray"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         />
+            </Grid>
+
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    <!--Login Page-->
+    <ShellContent FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="login" />
+    <!--Loading Page-->
+    <ShellContent FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="load" />
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:HomePage}"
+        Route="home" />
+        <ShellContent
+        Title="Account"
+        ContentTemplate="{DataTemplate views:ViewAccountPage}"
+        Route="account" />
+        <ShellContent
+        Title="Inspiration"
+        ContentTemplate="{DataTemplate views:SearchRecipePage}"
+        Route="inspiration" />
+        <ShellContent
+        Title="Rated"
+        ContentTemplate="{DataTemplate views:SavedAndRatedPage}"
+        Route="rated" />
+        <ShellContent
+        Title="Bar School"
+        ContentTemplate="{DataTemplate views:BarSchoolPage}"
+        Route="barschool" />
+    </FlyoutItem>
+
+</Shell>

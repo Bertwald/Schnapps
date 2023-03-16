@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Schnapps.ViewModel"
+             xmlns:view="clr-namespace:Schnapps.View"
+             x:DataType="viewmodel:LoginViewModel"
+             x:Class="Schnapps.View.LoginPage"
+             Shell.NavBarIsVisible="False"
+             Title="Login"
+             BackgroundColor="LightGray">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+
+        <Image Source="breengel.png" HeightRequest="250" WidthRequest="250" />
+
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Schnapps" FontSize="28" HorizontalOptions="Center" VerticalOptions="Start" />
+            <Label Text="The app for true hydroxylated hydrocarbon aficionados" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+        <Label Text="Login to your account" FontSize="22" TextColor="DimGray" HorizontalTextAlignment="Center" />
+        <Label Text="Previous Login failed, check username and password" FontSize="12" TextColor="IndianRed" HorizontalTextAlignment="Center" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type view:LoginPage}}, Path=FailedLogin}"/>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Entry Text="{Binding Username}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Username" Keyboard="Email" MaxLength="12" PlaceholderColor="DimGray">
+                <Entry.Behaviors>
+                    <toolkit:EventToCommandBehavior
+                        EventName="TextChanged"
+                        Command="{Binding CheckUsernameCommand}" />
+                </Entry.Behaviors>
+            </Entry>
+            <Image Source="beericon.png" HeightRequest="20" WidthRequest="20" IsOpaque="False" Opacity="0.8" IsVisible="{Binding UsernameOK}"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Entry Text="{Binding Password}" Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" IsPassword="True" MaxLength="12" PlaceholderColor="DimGray">
+                <Entry.Behaviors>
+                    <toolkit:EventToCommandBehavior
+                        EventName="TextChanged"
+                        Command="{Binding CheckPasswordCommand}" />
+                </Entry.Behaviors>
+            </Entry>
+            <Image Source="beericon.png" HeightRequest="20" WidthRequest="20" IsOpaque="true" Opacity="0.8" IsVisible="{Binding PasswordOK}"/>
+        </HorizontalStackLayout>
+        <Button Text="Login" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" Command="{Binding LoginCommand}" IsEnabled="{Binding CanAttemptLogin}" />
+
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+            <Label Text="Teetotaller?" TextColor="Gray" />
+            <Label Text="We can fix that" TextColor="#50b3f2" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+            <Label Text="Forgot your account or password?" TextColor="Gray" />
+            <Label Text="We cant fix that!" TextColor="#50b3f2" />
+        </StackLayout>
+        <!--<Label Text="{Binding Source={RelativeSource AncestorType={x:Type view:LoginPage}}, Path=FailedLogin}" FontSize="12" TextColor="IndianRed" HorizontalTextAlignment="Center"/>-->
+
+    </VerticalStackLayout>
+</ContentPage>

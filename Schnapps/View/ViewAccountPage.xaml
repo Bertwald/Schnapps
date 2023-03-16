@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Schnapps.View.ViewAccountPage"
+             xmlns:local="clr-namespace:Schnapps.Converters"
+             xmlns:viewmodel="clr-namespace:Schnapps.ViewModel"
+             x:DataType="viewmodel:AccountViewModel"
+             Title="{Binding Title}"
+             Shell.FlyoutBehavior="Flyout">
+    <ContentPage.Resources>
+        <local:NatToBoolConverter x:Key="natToBool" />
+        <local:IntToStringConverter x:Key="intToString" />
+    </ContentPage.Resources>
+    <ScrollView BackgroundColor="LightGray">
+    <VerticalStackLayout Margin="20" HorizontalOptions="Center" Padding="15" Spacing="20">
+
+        <Frame BorderColor="DimGray"
+              Padding="5">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label Text="Name:"></Label>
+                <Label Text="{Binding UserData.Name}"></Label>
+            </HorizontalStackLayout>
+        </Frame>
+        <Frame BorderColor="DimGray"
+              Padding="5">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label Text="Alias:"></Label>
+                <Label Text="{Binding UserData.Alias}"></Label>
+            </HorizontalStackLayout>
+        </Frame>
+        <Frame BorderColor="DimGray"
+              Padding="5">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label Text="Email:"></Label>
+                <Label Text="{Binding UserData.Email}"></Label>
+            </HorizontalStackLayout>
+        </Frame>
+        <Frame BorderColor="DimGray"
+              Padding="5" IsVisible="{Binding Recipes.Count, Converter={StaticResource natToBool}}">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10" IsVisible="{Binding Recipes.Count, Converter={StaticResource natToBool}}">
+                <Label Text="Number of Saved Recipes:"></Label>
+                <Label Text="{Binding Recipes.Count, Converter={StaticResource intToString}}"></Label>
+            </HorizontalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

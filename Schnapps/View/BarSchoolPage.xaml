@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:Schnapps.ViewModel"
+             x:DataType="viewmodel:VideoViewModel"
+             x:Class="Schnapps.View.BarSchoolPage"
+             Title="{Binding Title}"
+             Shell.FlyoutBehavior="Flyout">
+
+    <ScrollView>
+        <StackLayout Padding="20"
+                 BackgroundColor="LightGray">
+            <Grid HorizontalOptions="Center" VerticalOptions="Start" ColumnDefinitions="*, *">
+                <Image Grid.Column="0" Source="breengel.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" HorizontalOptions="Start"></Image>
+                <Label Grid.Column="1" Text ="Connoisseurs Choice Videos:" FontSize="24" TextColor="DarkRed" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"></Label>
+            </Grid>
+            <Border StrokeThickness="2"
+                    Stroke="#878b96">
+                <CollectionView ItemsSource="{Binding VideosList}"
+                        SelectionMode="None"
+                        HeightRequest="450">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="15">
+                        </LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <Frame BackgroundColor="DimGray"
+                                   BorderColor="Black"
+                                   HeightRequest="350"
+                                   WidthRequest="450"
+                                   Margin="10"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <toolkit:MediaElement
+                                    ShouldAutoPlay="False"
+                                    ShouldShowPlaybackControls="True"
+                                    Source="{Binding .}"
+                                    WidthRequest="400"
+                                    HeightRequest="300">
+                                </toolkit:MediaElement>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+            <Grid HorizontalOptions="Start" VerticalOptions="Start" ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Text="Schnapps By Breengel" FontSize="16" TextColor="DarkRed" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"></Label>
+                <Image Grid.Column="1" Source="breengelboss.png" Aspect="AspectFit" HeightRequest="70" WidthRequest="70" HorizontalOptions="Start"></Image>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+
+
+</ContentPage>
