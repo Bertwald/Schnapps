@@ -13,8 +13,10 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+        #region ComponentInit
             .UseMauiCommunityToolkitMediaElement()
             .UseMauiCommunityToolkit()
+        #endregion
             .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -25,6 +27,9 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
         #region Services
+        // Instead of wrapping an ICocktailService in a cocktailservice object one might register
+        // it as a service to use with an interface as dp parameter
+        // If nothing else the naming would be alot more inuitive
         builder.Services.AddSingleton<CocktailService>();
         #endregion
         #region Views

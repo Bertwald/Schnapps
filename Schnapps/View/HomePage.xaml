@@ -7,7 +7,8 @@
              x:DataType="viewmodel:HomePageViewModel"
              Title="Home"
              Shell.FlyoutBehavior="Flyout"
-             BackgroundColor="LightGray">
+             BackgroundColor="LightGray"
+             >
     <!-- ☝️☝️ Enable the shell flyout, this is our preferred navigation-->
     <!-- 👇👇 Remove the backbutton, dont want to go back from here-->
     <Shell.BackButtonBehavior>
@@ -24,19 +25,17 @@
                 <Label Text="Arnold von Wurstenherg III, Grandson of Founder Gaston von Wurstenherg" FontSize="Body" HorizontalTextAlignment="Center" FontAttributes="Bold,Italic"/>
             </VerticalStackLayout>
 
-            <Grid ColumnDefinitions="*,70,*" HeightRequest="100" MaximumWidthRequest="480">
-                <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="1" Spacing="10">
-                    <Label Text="History" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                    <Label Text="Founded in 1748, Breengel is among the oldest breweries in Beergium and has remained in the hands of the founding family for centuries."/>
-                    <Label Text="We are the proud inventors of the artisanal method of open-pit fermentation as well as 'kött-öl'"/>
+            <Grid ColumnDefinitions="*,50,*" RowDefinitions="auto,5"  WidthRequest="380">
+            <Image Source="breengel.png" IsOpaque="True" Opacity="0.05" Aspect="AspectFill" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <VerticalStackLayout VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1">
+                    <Label Text="History" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Text="Founded in 1748, Breengel is among the oldest breweries in Beergium and has remained in the hands of the founding family for centuries. We are the proud inventors of the artisanal method of open-pit fermentation as well as 'kött-öl'" HorizontalTextAlignment="Center" Margin="5"/>
                 </VerticalStackLayout>
-                <VerticalStackLayout Grid.Column="2" Grid.ColumnSpan="1" Spacing="10">
-                    <Label Text="Vision" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                    <Label Text="Our vision has always been to inspire you, the people to get drunk with style, and providing the means to be."/>
-                    <Label Text="To reach a new generation of refined gentlefolk we have launched this app to inspire new drinking habits and fight the progressive tendencies of teetotallers and other modern heresies"/>
+                <VerticalStackLayout Grid.Row="0" VerticalOptions="StartAndExpand" Grid.Column="2" Grid.ColumnSpan="1">
+                    <Label Text="Vision" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Text="Our vision has always been to inspire you, the people to get drunk with style, and providing the means to be. To reach a new generation of refined gentlefolk we have launched this app to inspire new drinking habits and fight the progressive tendencies of teetotallers and other modern heresies" HorizontalTextAlignment="Center" Margin="5"/>
                 </VerticalStackLayout>
             </Grid>
-            <Image Source="breengel.png" Margin="60,0" IsOpaque="True" Opacity="0.1" MaximumWidthRequest="300"/>
             <Label/>
     </VerticalStackLayout>
     </ScrollView>

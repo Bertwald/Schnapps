@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
-using Schnapps.Model;
-using Schnapps.Services;
 using YoutubeExplode;
 using YoutubeExplode.Videos.Streams;
 
