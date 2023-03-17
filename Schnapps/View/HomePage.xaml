@@ -15,9 +15,9 @@
             IsVisible="False" IsEnabled="False"
             />
     </Shell.BackButtonBehavior>
-    <ScrollView>
-        
-    <VerticalStackLayout Spacing="15" Margin="15" HorizontalOptions="Center">
+    
+    <ScrollView HorizontalOptions="CenterAndExpand">
+        <VerticalStackLayout Spacing="15" Margin="15" HorizontalOptions="CenterAndExpand">
             <Label Text="Schnapps™ by Breengel" FontSize="Title" HorizontalOptions="Center" FontAttributes="Bold"/>
         <VerticalStackLayout>
             <Image Source="owner.png" HorizontalOptions="Center" Aspect="AspectFit" MaximumWidthRequest="300"/>
@@ -25,20 +25,19 @@
             </VerticalStackLayout>
 
             <Grid ColumnDefinitions="*,70,*" HeightRequest="100" MaximumWidthRequest="480">
-                <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="1">
+                <VerticalStackLayout Grid.Column="0" Grid.ColumnSpan="1" Spacing="10">
                     <Label Text="History" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
                     <Label Text="Founded in 1748, Breengel is among the oldest breweries in Beergium and has remained in the hands of the founding family for centuries."/>
                     <Label Text="We are the proud inventors of the artisanal method of open-pit fermentation as well as 'kött-öl'"/>
                 </VerticalStackLayout>
-                <VerticalStackLayout Grid.Column="2" Grid.ColumnSpan="1">
+                <VerticalStackLayout Grid.Column="2" Grid.ColumnSpan="1" Spacing="10">
                     <Label Text="Vision" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                    <Label Text="Our vision has always been to inspire you, the people, to get drunk with style."/>
+                    <Label Text="Our vision has always been to inspire you, the people to get drunk with style, and providing the means to be."/>
                     <Label Text="To reach a new generation of refined gentlefolk we have launched this app to inspire new drinking habits and fight the progressive tendencies of teetotallers and other modern heresies"/>
                 </VerticalStackLayout>
             </Grid>
-                <Image Source="breengel.png" Margin="60,0" IsOpaque="True" Opacity="0.1" MaximumWidthRequest="300"/>
-
-        <Label/>
+            <Image Source="breengel.png" Margin="60,0" IsOpaque="True" Opacity="0.1" MaximumWidthRequest="300"/>
+            <Label/>
     </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

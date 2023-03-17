@@ -8,7 +8,7 @@
              Title="{Binding Title}"
              Shell.FlyoutBehavior="Flyout"
              BackgroundColor="gray">
-    <ScrollView>
+    <ScrollView HorizontalOptions="CenterAndExpand">
     <VerticalStackLayout BackgroundColor="lightgray" Spacing="5" HorizontalOptions="CenterAndExpand" Padding="20">
             <Image Source="{Binding ObservableRecipe.Imageurl}" Aspect="AspectFit" WidthRequest="250" HorizontalOptions="Center"/>
             <HorizontalStackLayout HorizontalOptions="Center">
@@ -32,7 +32,7 @@
             <Frame BackgroundColor="DimGray"
                                    BorderColor="Black"
                                    HeightRequest="350"
-                   MaximumWidthRequest="350"
+                                   WidthRequest="350"
                                    Margin="10"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"
