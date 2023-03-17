@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 
 namespace Schnapps.ViewModel {
     public partial class SavedAndRatedViewModel: BaseViewModel {
+        #region Members
         private SessionData _sessionData;
-
+        #endregion
+        #region Properties
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(RatingString))]
         private double rating;
@@ -22,13 +24,14 @@ namespace Schnapps.ViewModel {
         [ObservableProperty]
         private ObservableCollection<Recipe> _recipes;
         public string RatingString { get => ((Rating)Rating).ToString(); }
-
-
+        #endregion
+        #region Contructors
         public SavedAndRatedViewModel() {
             _sessionData = SessionData.GetInstance();
             UpdateObservables();
         }
-
+        #endregion
+        #region Commands
         [RelayCommand]
         public async void MakeSelection() {
             await Task.Run(() => Rating = (double)(CurrentlyRating?.Rating??Model.Rating.None));
@@ -37,11 +40,12 @@ namespace Schnapps.ViewModel {
         public async void Rate() {
             CurrentlyRating.Rating = (Rating)Rating;
         }
-
+        #endregion
+        #region Methods
         internal void UpdateObservables() {
             Recipes= _sessionData.UserSavedData.ToObservableCollection();
             CurrentlyRating = Recipes.FirstOrDefault();
         }
-
+        #endregion
     }
 }

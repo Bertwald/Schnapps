@@ -13,10 +13,11 @@ public partial class MainPage : ContentPage
     public string Username { get; set; }
     public string Password { get; set; }
     #endregion
+    #region Constructors
     public MainPage() {
         InitializeComponent();
     }
-
+    #endregion
     protected override async void OnNavigatedTo(NavigatedToEventArgs args) {
         if (await Authenticate()) {
             await Shell.Current.GoToAsync("///home");
@@ -25,7 +26,7 @@ public partial class MainPage : ContentPage
         }
         base.OnNavigatedTo(args);
     }
-
+    
     async Task<bool> Authenticate() {
 
         await Task.Delay(2000);

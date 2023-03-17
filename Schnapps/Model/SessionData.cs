@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Schnapps.Model {
+﻿namespace Schnapps.Model {
     // Singleton containing the data with which we identify the unique users of our application,
     // gives access to database id for the UserAccount and user specific paths for savefiles
     internal class SessionData {

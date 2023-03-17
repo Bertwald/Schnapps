@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace Schnapps.Converters {
     // Is needed when we have default value with a non nullable type, by allowing nullability on type in viewmodel.

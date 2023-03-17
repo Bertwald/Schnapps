@@ -10,7 +10,6 @@ namespace Schnapps.ViewModel {
         #region Properties
         //public bool HasSavedRecipes { get => _sessionData.UserSavedData?.Any() ?? false; }
         #endregion
-
         #region Commands
         //No longer used means of navigation, replaced by flyout
         /*

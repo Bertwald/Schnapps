@@ -43,7 +43,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<HomePageViewModel>();
         builder.Services.AddSingleton<SearchRecipesViewModel>();
         #endregion
-
         return builder.Build();
 	}
 }

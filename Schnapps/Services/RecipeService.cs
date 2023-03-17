@@ -1,14 +1,7 @@
 ﻿using Schnapps.Model;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace Schnapps.Services
-{
+namespace Schnapps.Services {
     // Variant made with only the course materials
     // For a simplified refactor with better syntax, using "refit", see ICocktailservice and CocktailService
     internal class RecipeService

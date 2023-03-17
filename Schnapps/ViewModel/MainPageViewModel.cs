@@ -1,11 +1,5 @@
-﻿using Schnapps.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Schnapps.ViewModel {
+﻿namespace Schnapps.ViewModel {
+    // TODO: KILL viewmodel, functionality no longer needed!
     public class MainPageViewModel : BaseViewModel {
         public MainPageViewModel() {
             /*

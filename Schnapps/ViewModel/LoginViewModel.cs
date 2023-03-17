@@ -50,10 +50,12 @@ namespace Schnapps.ViewModel {
             await Shell.Current.GoToAsync(nameof(MainPage)+$"?username={Username}&password={Password}");
         }
         #endregion
+        #region Methods
         internal void Clean() {
             Password = ""; 
             Username = "";
             PasswordOK = UsernameOK = false;
         }
+        #endregion
     }
 }

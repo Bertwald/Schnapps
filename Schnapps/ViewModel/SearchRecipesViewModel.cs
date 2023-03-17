@@ -5,7 +5,6 @@ using Schnapps.Services;
 using Schnapps.View;
 using System.Collections.ObjectModel;
 
-
 namespace Schnapps.ViewModel {
     public partial class SearchRecipesViewModel : BaseViewModel {
         #region Fields
@@ -51,6 +50,9 @@ namespace Schnapps.ViewModel {
         }
 
         [RelayCommand]
+        #endregion
+        #region Methods
+        //TODO: change results order
         public async void OrderResults() {
 
         }

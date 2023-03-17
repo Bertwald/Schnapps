@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Schnapps.Model
-{
+﻿namespace Schnapps.Model {
     public class Recipe
     {
+        #region Properties
         public string DrinkId { get; set; }
         public string Alternative { get; set; }
         public string DrinkName { get; set; }
@@ -18,5 +12,6 @@ namespace Schnapps.Model
         public string Imageurl { get; set; }
         public bool IsAlcoholic { get; set; }
         public string VideoURL { get; set; }
+        #endregion
     }
 }
