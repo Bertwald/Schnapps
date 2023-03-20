@@ -3,12 +3,20 @@ using CommunityToolkit.Maui;
 using Schnapps.ViewModel;
 using Schnapps.View;
 using Schnapps.Services;
+using Refit;
+using Microsoft.Maui.Hosting;
 
 namespace Schnapps;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
+
+    private const string _host = "https://www.thecocktaildb.com/api/json";
+    private const string _version = "v1";
+    private const string _key = "1";
+    private const string _fullUrl = $"{_host}/{_version}/{_key}/";
+
+    public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
@@ -26,10 +34,15 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+
+
         #region Services
         // Instead of wrapping an ICocktailService in a cocktailservice object one might register
         // it as a service to use with an interface as dp parameter
         // If nothing else the naming would be alot more inuitive
+        builder.Services.AddRefitClient<ICocktailService>()
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri(_fullUrl));
         builder.Services.AddSingleton<CocktailService>();
         #endregion
         #region Views

@@ -8,7 +8,8 @@ using System.Collections.ObjectModel;
 namespace Schnapps.ViewModel {
     public partial class SearchRecipesViewModel : BaseViewModel {
         #region Fields
-        private CocktailService _cocktailService;
+        //private CocktailService _cocktailService;
+        private ICocktailService _cocktailService;
         #endregion
         #region Properties
         [ObservableProperty]
@@ -21,23 +22,24 @@ namespace Schnapps.ViewModel {
         private ObservableCollection<string> ingredients = new();
         #endregion
         #region Constructors
-        public SearchRecipesViewModel(CocktailService cocktailService) {
-            _cocktailService = cocktailService;
+        public SearchRecipesViewModel(ICocktailService service) {
+            //_cocktailService = cocktailService;
+            _cocktailService = service;
             FillInitialList();
         }
         #endregion
         #region Methods
         private async void FillInitialList() { 
-            var cocktails = await _cocktailService.CocktailDBSevice.GetRandomCocktailAsync();
+            var cocktails = await _cocktailService.GetRandomCocktailAsync();
             cocktails.Drinks.ToList().ForEach(x => Drinks.Add(new DisplayItem() { Id = x.IdDrink, Name = x.StrDrink, Thumbnail = x.StrDrinkThumb }));
-            var ingredients = await _cocktailService.CocktailDBSevice.GetAllIngredientsAsync();
+            var ingredients = await _cocktailService.GetAllIngredientsAsync();
             ingredients.Drinks.OrderBy(x => x.StrIngredient1).ToList().ForEach(x => Ingredients.Add(x.StrIngredient1));
         }
         #endregion
         #region Commands
         [RelayCommand]
         public async void MakeSelection() {
-            var cocktails = await _cocktailService.CocktailDBSevice.GetCocktailsByIngredientAsync(ChosenItem??"Vodka");
+            var cocktails = await _cocktailService.GetCocktailsByIngredientAsync(ChosenItem??"Vodka");
             Drinks.Clear();
             cocktails.Drinks.ToList().ForEach(x => Drinks.Add(new DisplayItem() { Id = x.IdDrink, Name = x.StrDrink, Thumbnail = x.StrDrinkThumb }));
         }
