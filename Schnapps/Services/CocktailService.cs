@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 // complexity by abstraction, apart from the more obvious benefits of a centralized handling like making the code easier to maintain and easier to change
 // (protects clients (callers) from changes in subsystem functionality)
 
+
+// class not needed as of new refactor, will be removed after grading
 namespace Schnapps.Services {
     public class CocktailService {
         #region Fields

@@ -13,22 +13,15 @@ public partial class AppShell : Shell
         // Now we can add methods to shell buttons
         BindingContext = this;
 
-		//Routing.RegisterRoute(nameof(BarSchoolPage), typeof(BarSchoolPage));
-  //      Routing.RegisterRoute(nameof(GetVariationsPage), typeof(GetVariationsPage));
-  //      Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
-  //      Routing.RegisterRoute(nameof(NonAlcoholicPage), typeof(NonAlcoholicPage));
-  //      Routing.RegisterRoute(nameof(SavedAndRatedPage), typeof(SavedAndRatedPage));
-  //      Routing.RegisterRoute(nameof(SearchRecipePage), typeof(SearchRecipePage));
-  //      Routing.RegisterRoute(nameof(ViewAccountPage), typeof(ViewAccountPage));
-  //      Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
         Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-        Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+        Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
         Routing.RegisterRoute(nameof(DetailsPage), typeof(DetailsPage));
     }
 
     //Custom behavior to always navigate to the appshell item root
     protected override void OnNavigating(ShellNavigatingEventArgs args) {
         base.OnNavigating(args);
+        // When changing shell content, remove all visited pages from stack
         if (args.Source == ShellNavigationSource.ShellSectionChanged) {
             var navigation = Shell.Current.Navigation;
             var pages = navigation.NavigationStack;

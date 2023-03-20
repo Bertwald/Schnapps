@@ -46,7 +46,7 @@
             MaximumWidthRequest="400"/>
 
             <Slider x:Name="RatingSlider"
-                Value="{Binding Rating}"
+                Value="{Binding RatingScore}"
                 MaximumTrackColor="Black"
                 MinimumTrackColor="Black"
                 Minimum="1.0"

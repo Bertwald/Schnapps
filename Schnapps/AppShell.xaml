@@ -40,7 +40,7 @@
         Route="login" />
     <!--Loading Page-->
     <ShellContent FlyoutItemIsVisible="False"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate views:LoadingPage}"
         Route="load" />
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">

@@ -7,7 +7,7 @@ namespace Schnapps.ViewModel {
     public partial class VideoViewModel : BaseViewModel {
         #region Fields
         private readonly YoutubeClient youtube = new();
-        private readonly List<string> urls = new List<string>() { "https://www.youtube.com/watch?v=sISumy3TmIQ",
+        private readonly List<string> urls = new() { "https://www.youtube.com/watch?v=sISumy3TmIQ",
                                               "https://www.youtube.com/watch?v=hCGMcVfjiBo",
                                               "https://www.youtube.com/watch?v=b0IuTL3Z-kk",
                                               "https://www.youtube.com/watch?v=BW1te_miu5I"};

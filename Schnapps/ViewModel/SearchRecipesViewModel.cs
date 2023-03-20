@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 namespace Schnapps.ViewModel {
     public partial class SearchRecipesViewModel : BaseViewModel {
         #region Fields
-        //private CocktailService _cocktailService;
         private ICocktailService _cocktailService;
         #endregion
         #region Properties
@@ -23,7 +22,6 @@ namespace Schnapps.ViewModel {
         #endregion
         #region Constructors
         public SearchRecipesViewModel(ICocktailService service) {
-            //_cocktailService = cocktailService;
             _cocktailService = service;
             FillInitialList();
         }

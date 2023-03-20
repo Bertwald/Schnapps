@@ -38,17 +38,13 @@ public static class MauiProgram
 
 
         #region Services
-        // Instead of wrapping an ICocktailService in a cocktailservice object one might register
-        // it as a service to use with an interface as dp parameter
-        // If nothing else the naming would be alot more inuitive
         builder.Services.AddRefitClient<ICocktailService>()
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(_fullUrl));
-        builder.Services.AddSingleton<CocktailService>();
         #endregion
         #region Views
         builder.Services.AddTransient<LoginPage>();
         builder.Services.AddTransient<DetailsPage>();
-        builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<LoadingPage>();
         builder.Services.AddSingleton<BarSchoolPage>();
         builder.Services.AddSingleton<SearchRecipePage>();
         builder.Services.AddSingleton<SavedAndRatedPage>();

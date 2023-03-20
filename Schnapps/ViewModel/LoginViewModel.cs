@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Schnapps.View;
 
 namespace Schnapps.ViewModel {
     public partial class LoginViewModel : BaseViewModel {
@@ -40,7 +41,7 @@ namespace Schnapps.ViewModel {
         }
         [RelayCommand]
         public async void Login() {
-            await Shell.Current.GoToAsync(nameof(MainPage)+$"?username={Username}&password={Password}");
+            await Shell.Current.GoToAsync(nameof(LoadingPage)+$"?username={Username}&password={Password}");
         }
         #endregion
         #region Methods

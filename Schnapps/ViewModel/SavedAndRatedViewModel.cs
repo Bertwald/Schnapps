@@ -17,13 +17,13 @@ namespace Schnapps.ViewModel {
         #region Properties
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(RatingString))]
-        private double rating;
+        private double ratingScore;
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(Rating))]
+        [NotifyPropertyChangedFor(nameof(RatingScore))]
         private Recipe currentlyRating = new();
         [ObservableProperty]
         private ObservableCollection<Recipe> _recipes;
-        public string RatingString { get => ((Rating)Rating).ToString(); }
+        public string RatingString { get => ((Rating)RatingScore).ToString(); }
         #endregion
         #region Contructors
         public SavedAndRatedViewModel() {
@@ -34,11 +34,11 @@ namespace Schnapps.ViewModel {
         #region Commands
         [RelayCommand]
         public async void MakeSelection() {
-            await Task.Run(() => Rating = (double)(CurrentlyRating?.Rating??Model.Rating.None));
+            await Task.Run(() => RatingScore = (double)(CurrentlyRating?.Rating??Model.Rating.None));
         }
         [RelayCommand]
         public async void Rate() {
-            CurrentlyRating.Rating = (Rating)Rating;
+            CurrentlyRating.Rating = (Rating)RatingScore;
         }
         #endregion
         #region Methods

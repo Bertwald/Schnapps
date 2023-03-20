@@ -8,7 +8,7 @@ using YoutubeExplode.Videos.Streams;
 namespace Schnapps.ViewModel {
     public partial class DetailedPageViewModel : BaseViewModel {
         #region Fields
-        private CocktailService _cocktailService;
+        private ICocktailService _cocktailService;
         private SessionData _sessionData;
         private readonly YoutubeClient youtube = new();
         #endregion
@@ -21,22 +21,22 @@ namespace Schnapps.ViewModel {
         private RelayCommand executeSaveButtonCommand;
         #endregion
         #region Constructors
-        public DetailedPageViewModel(CocktailService cocktailService, string id) {
+        public DetailedPageViewModel(ICocktailService service, string id) {
             _sessionData = SessionData.GetInstance();
-            _cocktailService = cocktailService;
+            _cocktailService = service;
             SetRecipeFromId(id);
         }
         #endregion
         #region Commands
         [RelayCommand]
         public async void RandomNew() {
-            string newId = (await _cocktailService.CocktailDBSevice.GetRandomCocktailAsync()).Drinks.FirstOrDefault().IdDrink;
+            string newId = (await _cocktailService.GetRandomCocktailAsync()).Drinks.FirstOrDefault().IdDrink;
             SetRecipeFromId(newId);
         }
         #endregion
         #region Methods
         private async void SetRecipeFromId(string drinkId) {
-            var drink = (await _cocktailService.CocktailDBSevice.GetCocktailByIdAsync(drinkId)).Drinks.SingleOrDefault();
+            var drink = (await _cocktailService.GetCocktailByIdAsync(drinkId)).Drinks.SingleOrDefault();
             Recipe newRecipe = new() {
                 DrinkId = drink.IdDrink,
                 DrinkName = drink.StrDrink,

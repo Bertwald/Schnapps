@@ -8,13 +8,13 @@ namespace Schnapps.View;
 public partial class DetailsPage : ContentPage
 {
     #region Fields
-    private CocktailService _service;
+    private ICocktailService _service;
     #endregion
     #region Properties
     public string DetailId { set => SetBinding(value); }
     #endregion
     #region Constructors
-    public DetailsPage(CocktailService cocktailService)
+    public DetailsPage(ICocktailService cocktailService)
 	{
 		InitializeComponent();
 		_service = cocktailService;

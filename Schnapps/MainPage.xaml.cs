@@ -3,7 +3,7 @@ using Schnapps.Services;
 using Schnapps.View;
 using Schnapps.ViewModel;
 using System.Xml.Linq;
-
+/*
 namespace Schnapps;
     [QueryProperty(nameof(Username), "username")]
     [QueryProperty(nameof(Password), "password")]
@@ -46,3 +46,4 @@ public partial class MainPage : ContentPage
 
 }
 
+*/
